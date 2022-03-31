@@ -1,0 +1,41 @@
+package entidades;
+
+public abstract class Arma {
+	
+	private String nombre;
+	private int danoMaximo;
+	private int danoMinimo;
+	
+	public Arma() {}
+	
+	public abstract void usar();
+	
+	public int getDano() {
+		//La formula para obtener un número entre dos números cual quiera es (X-Y+1)+Y.
+		int numero = (int)(Math.random()*(danoMaximo-danoMinimo+1)+danoMinimo);
+		return numero;
+	}
+	
+	
+	public int getDanoMaximo() {
+		return danoMaximo;
+	}
+
+	public void setDanoMaximo(int danoMaximo) {
+		this.danoMaximo = danoMaximo;
+	}
+
+	public int getDanoMinimo() {
+		return danoMinimo;
+	}
+
+	public void setDanoMinimo(int danoMinimo) {
+		this.danoMinimo = danoMinimo;
+	}
+
+	@Override
+	public String toString() {
+		return "Arma [danoMaximo=" + danoMaximo + ", danoMinimo=" + danoMinimo + "]";
+	}
+	
+}

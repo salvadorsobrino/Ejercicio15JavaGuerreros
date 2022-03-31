@@ -1,0 +1,14 @@
+package entidades;
+
+public class Espada extends Arma{
+
+	public Espada(){
+		super();
+	}
+	@Override
+	public void usar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

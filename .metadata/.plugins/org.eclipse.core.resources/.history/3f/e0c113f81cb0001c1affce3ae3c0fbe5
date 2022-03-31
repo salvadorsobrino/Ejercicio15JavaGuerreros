@@ -1,0 +1,30 @@
+package entidades;
+
+public abstract class Arma {
+
+	private int danoMaximo;
+	private int danoMinimo;
+	
+	public Arma() {}
+	
+	public abstract void usar();
+	public int getDano() {
+		
+	}
+	
+	public int getDanoMaximo() {
+		return danoMaximo;
+	}
+
+	public void setDanoMaximo(int danoMaximo) {
+		this.danoMaximo = danoMaximo;
+	}
+
+	public int getDanoMinimo() {
+		return danoMinimo;
+	}
+
+	public void setDanoMinimo(int danoMinimo) {
+		this.danoMinimo = danoMinimo;
+	}
+}

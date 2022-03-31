@@ -1,0 +1,9 @@
+package entidades;
+
+public abstract class Arma {
+	private int danoMaximo;
+	private int danoMinimo;
+	
+	public abstract void usar();
+	
+}

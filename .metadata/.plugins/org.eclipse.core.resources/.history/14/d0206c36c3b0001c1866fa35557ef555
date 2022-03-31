@@ -1,0 +1,50 @@
+package entidades;
+
+public class Mago extends Personaje{
+
+	private int inteligencia;
+	
+
+	public Mago() {
+		super();
+	}
+	@Override
+	public void atacar(Personaje p) {
+		int dano = 0;
+		System.out.println(this.getNombre()+" atacó a "+p.getNombre());
+		if (!p.esquivar()) {
+			System.out.println("No ha esquivado el ataque");
+			if (this.getArma() instanceof Hechizo) {
+				System.out.println("y esta utilizando su arma favorita");
+				dano = this.getArma().getDano()+this.inteligencia;
+				System.out.println(this.getNombre()+" inflingió "+dano+" de daño a "+p.getNombre());
+				if (this.lanzarhabilidadEspecial()){
+					this.habilidadEspecial(p);
+				}
+			} else {
+				System.out.println("y NO esta utilizando su arma favorita");
+				dano = this.getArma().getDano();
+				System.out.println(this.getNombre()+" inflingió "+dano+" de daño a "+p.getNombre());
+			}
+			if (this.critico()) {
+				System.out.println("¡ "+dano+" X2 !");
+				dano *= 2;
+				System.out.println(this.getNombre()+" inflingió "+dano+" de daño a "+p.getNombre());
+			}
+		}
+		p.setVida(p.getVida()-dano);
+		
+	}
+	@Override
+	public void habilidadEspecial(Personaje p) {
+		System.out.println(this.getNombre()+ " lanzó su habilidad especial y aumentó su inteligencia");
+		int inteligencia = this.getInteligencia();
+		this.setInteligencia(inteligencia*2);
+	}
+	public int getInteligencia() {
+		return inteligencia;
+	}
+	public void setInteligencia(int inteligencia) {
+		this.inteligencia = inteligencia;
+	}
+}

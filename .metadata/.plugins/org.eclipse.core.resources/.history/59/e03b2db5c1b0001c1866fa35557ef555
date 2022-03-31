@@ -1,0 +1,41 @@
+package entidades;
+
+public class Curandero extends Personaje{
+	private int sabiduria;
+	
+
+	public Curandero() {
+		super();
+	}
+	@Override
+	public void atacar(Personaje p) {
+		int dano = 0;
+		if (!p.esquivar()) {
+			System.out.println("No ha esquivado el ataque");
+			if (this.getArma() instanceof Rezo) {
+				dano = this.getArma().getDano()+this.sabiduria;
+				if (this.lanzarhabilidadEspecial()){
+					this.habilidadEspecial(this);
+				}
+			} else {
+				dano = this.getArma().getDano();
+			}
+			if (this.critico()) {
+				dano *= 2;
+			}
+		}
+		p.setVida(p.getVida()-dano);
+		
+	}
+	@Override
+	public void habilidadEspecial(Personaje p) {
+		p.setVida(p.getVida()+(this.sabiduria+);
+	}
+
+	public int getSabiduria() {
+		return sabiduria;
+	}
+	public void setSabiduria(int sabiduria) {
+		this.sabiduria = sabiduria;
+	}
+}

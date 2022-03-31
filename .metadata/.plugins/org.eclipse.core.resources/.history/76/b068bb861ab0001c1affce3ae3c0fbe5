@@ -1,0 +1,13 @@
+package entidades;
+
+public class Arco extends Arma{
+	public Arco(){
+		super();
+	}
+	@Override
+	public void usar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

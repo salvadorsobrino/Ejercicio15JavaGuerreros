@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="javax.sound.midi.SysexMessage"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="entidades.Personaje"/>
+    <fullyQualifiedTypeName name="entidades.Guerrero"/>
+    <fullyQualifiedTypeName name="entidades.Espada"/>
+    <fullyQualifiedTypeName name="entidades.Mago"/>
+    <fullyQualifiedTypeName name="entidades.Curandero"/>
+    <fullyQualifiedTypeName name="entidades.Hechizo"/>
+    <fullyQualifiedTypeName name="entidades.Rezo"/>
+</qualifiedTypeNameHistroy>
