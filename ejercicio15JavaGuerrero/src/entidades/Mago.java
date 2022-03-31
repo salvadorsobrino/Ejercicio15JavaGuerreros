@@ -11,27 +11,29 @@ public class Mago extends Personaje {
 	@Override
 	public void atacar(Personaje p) {
 		int dano = 0;
-		System.out.println(this.getNombre() + " atacó a " + p.getNombre());
-		if (!p.esquivar()) {
-			if (this.getArma() instanceof Hechizo) {
-				System.out.println("y esta utilizando su arma favorita");
-				dano = this.getArma().getDano() + this.inteligencia;
-				System.out.println(this.getNombre() + " usó " + this.getArma().getNombre() + " e inflingió " + dano
-						+ " de daño a " + p.getNombre());
-				if (this.lanzarhabilidadEspecial()) {
-					this.habilidadEspecial(p);
+		if (this != p) {
+			System.out.println(this.getNombre() + " atacó a " + p.getNombre());
+			if (!p.esquivar()) {
+				if (this.getArma() instanceof Hechizo) {
+					System.out.println("y esta utilizando su arma favorita");
+					dano = this.getArma().getDano() + this.inteligencia;
+					System.out.println(this.getNombre() + " usó " + this.getArma().getNombre() + " e inflingió " + dano
+							+ " de daño a " + p.getNombre());
+					if (this.lanzarhabilidadEspecial()) {
+						this.habilidadEspecial(p);
+					}
+				} else {
+					System.out.println("y NO esta utilizando su arma favorita");
+					dano = this.getArma().getDano();
+					System.out.println(this.getNombre() + " usó " + this.getArma().getNombre() + " e inflingió " + dano
+							+ " de daño a " + p.getNombre());
 				}
-			} else {
-				System.out.println("y NO esta utilizando su arma favorita");
-				dano = this.getArma().getDano();
-				System.out.println(this.getNombre() + " usó " + this.getArma().getNombre() + " e inflingió " + dano
-						+ " de daño a " + p.getNombre());
-			}
-			if (this.critico()) {
-				System.out.println("¡ " + dano + " X2 !");
-				dano *= 2;
-				System.out.println(this.getNombre() + " usó " + this.getArma().getNombre() + " e inflingió " + dano
-						+ " de daño a " + p.getNombre());
+				if (this.critico()) {
+					System.out.println("¡ " + dano + " X2 !");
+					dano *= 2;
+					System.out.println(this.getNombre() + " usó " + this.getArma().getNombre() + " e inflingió " + dano
+							+ " de daño a " + p.getNombre());
+				}
 			}
 		}
 		p.setVida(p.getVida() - dano);

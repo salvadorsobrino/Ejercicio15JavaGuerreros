@@ -9,6 +9,10 @@ public class Combate {
 
 	}
 
+	/** Método que consta de un while para hacer que los dos Personajes se ataquen y pierdan vida
+	 * @param p1 Personaje 1 que ataca a Personaje 2
+	 * @param p2 Personaje 2 que ataca a Personaje 1
+	 */
 	public void combatir(Personaje p1, Personaje p2) {
 		while (comprobarVida(p1) && comprobarVida(p2)) {
 			this.turno += 1;
@@ -25,6 +29,11 @@ public class Combate {
 		System.out.println("====================================================");
 	}
 
+	/** Método que comprueba que la vida sea menos o igual a 0 para terminar el combate. Este metodo
+	 * es para que quede más estético
+	 * @param p El Personaje que queremos ver su vida 
+	 * @return un booleano siendo true si tiene una vida mayor que 0 y false en caso contrario
+	 */
 	public boolean comprobarVida(Personaje p) {
 		boolean vivo = true;
 		if (p.getVida() <= 0) {
@@ -33,14 +42,23 @@ public class Combate {
 		return vivo;
 	}
 
+	/** Método que sirve para mostrar al ganador del combate
+	 * @param p1 Personaje 1 al cual se le comprueba su vida 
+	 * @param p2 Personaje 2 si Personaje 1 no esta vivo es porque ha ganado Personaje 2
+	 */
 	public void mostrarGanador(Personaje p1, Personaje p2) {
-		if (p1.getVida() > 0) {
+		if (comprobarVida(p1)) {
 			System.out.println("Ganador " + p1.toString());
 		} else {
 			System.out.println("Ganador " + p2.toString());
 		}
 	}
 
+	/** Método estético que sirve para mostrar la vida de los personajes y en caso de que sea
+	 * negativa establecerla a 0 y no aparezca -20 de vida al ser derrotado un Personaje.
+	 * @param p1 Personaje 1 para obtener su nombre y vida 
+	 * @param p2 Personaje 2 para obtener su nombre y vida 
+	 */
 	public void mostrarvida(Personaje p1, Personaje p2) {
 		if (p1.getVida() < 0) {
 			p1.setVida(0);

@@ -14,27 +14,29 @@ public class Guerrero extends Personaje {
 	@Override
 	public void atacar(Personaje p) {
 		int dano = 0;
-		System.out.println(this.getNombre() + " atacó a " + p.getNombre());
-		if (!p.esquivar()) {
-			if (this.getArma() instanceof Espada || this.getArma() instanceof Arco) {
-				System.out.println("y esta utilizando su arma favorita");
-				dano = this.getArma().getDano() + this.fuerza;
-				System.out.println(this.getNombre() + " usó " + this.getArma().getNombre() + " e inflingió " + dano
-						+ " de daño a " + p.getNombre());
-				if (this.lanzarhabilidadEspecial()) {
-					this.habilidadEspecial(p);
+		if (this != p) { // No se puede atacar a si mismo
+			System.out.println(this.getNombre() + " atacó a " + p.getNombre());
+			if (!p.esquivar()) { // Si no esquiva le realizara el daño (20% esquivar)
+				if (this.getArma() instanceof Espada || this.getArma() instanceof Arco) {
+					System.out.println("y esta utilizando su arma favorita");
+					dano = this.getArma().getDano() + this.fuerza;
+					System.out.println(this.getNombre() + " usó " + this.getArma().getNombre() + " e inflingió " + dano
+							+ " de daño a " + p.getNombre());
+					if (this.lanzarhabilidadEspecial()) { // Lanza su habilidad especial (15%)
+						this.habilidadEspecial(p);
+					}
+				} else {
+					System.out.println("y NO esta utilizando su arma favorita");
+					dano = this.getArma().getDano();
+					System.out.println(this.getNombre() + " usó " + this.getArma().getNombre() + " e inflingió " + dano
+							+ " de daño a " + p.getNombre());
 				}
-			} else {
-				System.out.println("y NO esta utilizando su arma favorita");
-				dano = this.getArma().getDano();
-				System.out.println(this.getNombre() + " usó " + this.getArma().getNombre() + " e inflingió " + dano
-						+ " de daño a " + p.getNombre());
-			}
-			if (this.critico()) {
-				System.out.println("¡ " + dano + " X2 !");
-				dano *= 2;
-				System.out.println(this.getNombre() + " usó " + this.getArma().getNombre() + " e inflingió " + dano
-						+ " de daño a " + p.getNombre());
+				if (this.critico()) { // Golpe critico (10%)
+					System.out.println("¡ " + dano + " X2 !");
+					dano *= 2;
+					System.out.println(this.getNombre() + " usó " + this.getArma().getNombre() + " e inflingió " + dano
+							+ " de daño a " + p.getNombre());
+				}
 			}
 		}
 		p.setVida(p.getVida() - dano);
@@ -42,15 +44,17 @@ public class Guerrero extends Personaje {
 
 	@Override
 	public void habilidadEspecial(Personaje p) {
-		System.out.println(
-				this.getNombre() + " lanzó su habilidad especial y ataca de nuevo con " + this.getArma().getNombre());
-		int dano = this.getArma().getDano() + this.fuerza;
-		if (this.critico()) {
-			System.out.println("¡ " + dano + " X2 !");
-			dano *= 2;
+		if (this != p) {
+			System.out.println(this.getNombre() + " lanzó su habilidad especial y ataca de nuevo con "
+					+ this.getArma().getNombre());
+			int dano = this.getArma().getDano() + this.fuerza;
+			if (this.critico()) {
+				System.out.println("¡ " + dano + " X2 !");
+				dano *= 2;
+			}
+			System.out.println(this.getNombre() + " inflingió " + dano + " de daño a " + p.getNombre());
+			p.setVida(p.getVida() - dano);
 		}
-		System.out.println(this.getNombre() + " inflingió " + dano + " de daño a " + p.getNombre());
-		p.setVida(p.getVida() - dano);
 	}
 
 	public int getFuerza() {

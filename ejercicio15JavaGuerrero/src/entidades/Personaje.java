@@ -13,22 +13,32 @@ public abstract class Personaje {
 
 	}
 
+	/** Método abstracto que quien lo invoque atacará a otro personaje
+	 * @param p Indica el Personaje que va a atacar
+	 */
 	public abstract void atacar(Personaje p);
 
+	/** Método abstracto que invoca la habilidad especial del personaje 
+	 * @param p Indica el Personaje objetivo de su habilidad especial pudiendo ser el mismo.
+	 */
 	public abstract void habilidadEspecial(Personaje p);
 
+	/** Método que se encarga de decidir si un golpe será critico 10%
+	 * @return devuelve true en caso de ser critico en caso contrario false
+	 */
 	public boolean critico() {
 		boolean critico = false;
 		int opcion = numero();
 		if (opcion == 3) {
 			System.out.println("¡CRITICO!");
 			critico = true;
-		} else {
-			critico = false;
-		}
+		} 
 		return critico;
 	}
 
+	/** Método que se encarga de decidir si esquivará el ataque 20%
+	 * @return devuelve true en caso de esquivar en caso contrario false
+	 */
 	public boolean esquivar() {
 		boolean esquivar = false;
 		int opcion = numero();
@@ -41,6 +51,12 @@ public abstract class Personaje {
 		return esquivar;
 	}
 
+	/** Método que se encarga de establecer las posibilidades de esquivar y de ser critico
+	 * si devuelve 1 el 70% de las veces no hace nada el personaje
+	 * si devuelve 2 el 20% de las veces esquiva
+	 * si devuelve 3 el 10% restante es la probabilidad de hacer crítico
+	 * @return Devuelve la opcion seleccionada.
+	 */
 	public int numero() {
 
 		double random = Math.random();// Generamos un numero al azar entre 0 y 1
@@ -56,6 +72,10 @@ public abstract class Personaje {
 		}
 	}
 
+	/** Método que se encarga de determinar si el personaje lanzara su habilidad especial
+	 * gracias a un numero entre 075-0.9 siendo el 15% de las veces lanza la habilidad especial
+	 * @return booleano que es true en caso de lance la habilidad el persona y false en caso contrario
+	 */
 	public boolean lanzarhabilidadEspecial() {
 		boolean probabilidad = false;
 		double random = Math.random();// Generamos un numero al azar entre 0 y 1

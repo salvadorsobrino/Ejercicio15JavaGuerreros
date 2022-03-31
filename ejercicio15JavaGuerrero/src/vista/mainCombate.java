@@ -64,7 +64,7 @@ public class mainCombate {
 		System.out.println("*************************ULTIMO COMBATE*************************");
 		
 		c = new Combate();
-		g1.setVida(100);
+		g1.setVida(100); // Se reestablece la vida de los Personajes para que vuelvan a combatir
 		c1.setVida(100);
 		
 		g1.setArma(r1);
